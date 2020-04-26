@@ -1,0 +1,39 @@
+
+
+Given several observations of a vector x, of dimension d,
+provided by one or more fmatrix files,
+this program computes the pearson correlation.
+
+The program computes the covarianze matrix (d x d)
+  cov = E{(x-mu) (x-m)^T }
+
+and the pearson or the normalized covarianze
+  cov(i,j) = cov(i,j)/ (stdev(i) * stdev(j))
+
+Both matrixes can be optionally save (in text or binary form).
+
+Then, it prints, for each coefficient, the components with highter 
+pearson value.
+
+E.g.:
+
+Feature 0
+-0.524439	rho[0][6]
+0.314953	rho[0][1]
+-0.249641	rho[0][7]
+-0.200226	rho[0][8]
+../..
+Feature 1
+-0.399633	rho[1][6]
+0.350754	rho[1][2]
+0.314953	rho[1][0]
+../..
+
+
+The highest correation of x[0] is x[6], coef. -0.5244; then x[1], etc.
+Then, for x[1], highest correlation is with x[6], ...
+
+
+
+Antonio Bonafonte
+Universitat Politècnica de Catalunya, 2015
