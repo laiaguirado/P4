@@ -63,10 +63,14 @@ ejercicios indicados.
 
   * LPC2C : transforma LPC to cepstrum. Se puede elegir el orden del LPC y el orden del cepstrum.
 
+  <code>sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $LPC -l 240 -m $lpc_order | $LPC2C -m $lpc_orden -M $nceps > $base.cep</code>
+
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales en escala Mel (MFCC) en
   su fichero <code>scripts/wav2mfcc.sh</code>:
 
   * MFCC: analisis MFCC. Se puede elegir entre otras cosas el numero l de muestras por trama, el orden m del cepstrum, el coefficiente de liftering, el orden del canal para el mel-filter bank o la frecuencia de muestreo.
+
+  <code>sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $MFCC -l 240 -m $mfcc_order -s 8000 > $base.mfcc</code>
 
 ### Extracción de características.
 
