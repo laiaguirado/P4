@@ -32,16 +32,152 @@ ejercicios indicados.
 - Analice el script `wav2lp.sh` y explique la misión de los distintos comandos, y sus opciones, involucrados
   en el *pipeline* principal (`sox`, `$X2X`, `$FRAME`, `$WINDOW` y `$LPC`).
 
+  * sox: Convierte la señal de entrada un formato concreto de b bits con o sin cabecera. Se puede elegir si tiene cabecera o no, el formato de la señal, los bits utilizados entre muchas otras cosas, básicamente como se desea la señal de entrada.
+  * X2X : es el programa de SPTK que permite la conversión entre distintos formatos de datos. 
+  * FRAME: divide la señal de entrada en tramas de l muestras con desplazamiento de ventana de p muestras que se le indiquen y también puede elegir si el punto de comienzo es centrado o no.
+  * WINDOW: Multiplica cada trama por una ventana. Se puede elegir el numero l de muestras por trama del fichero de entrada y salida, el  tipo de normalización y el tipo de ventana que se quiere utilizar. 
+  * LPC: Calcula los lpc_order primeros coeficientes de predicción lineal, precedidos por el factor de ganancia del predictor. Se puede escoger el numero l de muestras por trama, el orden del LPC y el valor mínimo del determinante de la matriz normal.
+
 - Explique el procedimiento seguido para obtener un fichero de formato *fmatrix* a partir de los ficheros
   de salida de SPTK (líneas 41 a 47 del script `wav2lp.sh`).
 
-  * ¿Por qué es conveniente usar este formato (u otro parecido)?
+Primero se extraen las características necesarias de la señal:
+  * sox $inputfile -t raw -e signed -b 16 - : Convierte la señal de entrada a reales en coma flotante de 16 bits sin cabecera.
+  * $X2X +sf : permite la conversión entre formatos de datos para la siguiente orden
+  * $FRAME -l 240 -p 80 : divide la señal de entrada en tramas de 240 muestras con desplazamiento de ventana de 80 muestras
+  * $WINDOW -l 240 -L 240 : Multiplica cada trama por una ventana Blackman con 240 muestras por trama tanto del fichero de entrada como del fichero de salida.
+  * $LPC -l 240 -m $lpc_order : Calcula los lpc_order primeros coeficientes de predicción lineal, con 240 muestras por trama y la variable $lpc_order indica el orden del LPC.
+  * >$base.lp: la redirección permite redirigir la salida de un comando a un fichero que en este caso es base.lp
+Para realizar todos estos comandos se utiliza el encadenado que hace que la salida estándar de un comando se utilice como la entrada estándar del siguiente.
+En el fichero de formato *fmatrix* se realiza la parametrización de una señal de voz usando coeficientes de predicción lineal, en el que hay que poner el número de filas y de columnas, seguidos por los datos.
+  * El número de columnas (igual al número de coeficientes) se calcula a partir del orden del predictor lineal que es igual a uno más el orden ya que en el primer elemento del vector se almacena la ganancia de predicción.
+  * El número de filas (igual al número de tramas) depende de la longitud de la señal, la longitud y desplazamiento de la ventana, y la cadena de comandos que se ejecutan para obtener la parametrización. Pero podemos extraer esa información del fichero obtenido. Lo hacemos convirtiendo la señal parametrizada a texto, usando sox +fa, y contando el número de líneas, con el comando de UNIX wc -l.
+  - ¿Por qué es conveniente usar este formato (u otro parecido)?
+    
 
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales de predicción lineal
   (LPCC) en su fichero <code>scripts/wav2lpcc.sh</code>:
 
+  * LPC2C : transforma LPC to cepstrum. Se puede elegir el orden del LPC y el orden del cepstrum.
+<code>
+#!/bin/bash
+
+## \file
+## \TODO This file implements a very trivial feature extraction; use it as a template for other front ends.
+## 
+## Please, read SPTK documentation and some papers in order to implement more advanced front ends.
+
+# Base name for temporary files
+base=/tmp/$(basename $0).$$ 
+
+# Ensure cleanup of temporary files on exit
+trap cleanup EXIT
+cleanup() {
+   \rm -f $base.*
+}
+
+if [[ $# != 3 ]]; then
+   echo "$0 lpc_order nceps input.wav output.lp"
+   exit 1
+fi
+
+lpc_order=$1
+nceps=$2
+inputfile=$3
+outputfile=$4
+
+UBUNTU_SPTK=1
+if [[ $UBUNTU_SPTK == 1 ]]; then
+   # In case you install SPTK using debian package (apt-get)
+   X2X="sptk x2x"
+   FRAME="sptk frame"
+   WINDOW="sptk window"
+   LPC="sptk lpc"
+   LPC2C="sptk lpc2c"
+else
+   # or install SPTK building it from its source
+   X2X="x2x"
+   FRAME="frame"
+   WINDOW="window"
+   LPC="lpc"
+   LPC2C="lpc2c"
+fi
+
+# Main command for feature extration
+sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 |
+	$LPC -l 240 -m $lpc_order | $LPC2C -m $lpc_orden -M $nceps > $base.cep
+
+# Our array files need a header with the number of cols and rows:
+ncol=$((nceps+1)) 
+nrow=`$X2X +fa < $base.cep | wc -l | perl -ne 'print $_/'$ncol', "\n";'`
+
+# Build fmatrix file by placing nrow and ncol in front, and the data after them
+echo $nrow $ncol | $X2X +aI > $outputfile
+cat $base.cep >> $outputfile
+
+exit
+
+</code>
+
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales en escala Mel (MFCC) en
   su fichero <code>scripts/wav2mfcc.sh</code>:
+
+  * MFCC: analisis MFCC. Se puede elegir entre otras cosas el numero l de muestras por trama, el orden m del cepstrum, el coefficiente de liftering, el orden del canal para el mel-filter bank o la frecuencia de muestreo.
+
+<code>
+#!/bin/bash
+
+## \file
+## \TODO This file implements a very trivial feature extraction; use it as a template for other front ends.
+## 
+## Please, read SPTK documentation and some papers in order to implement more advanced front ends.
+
+# Base name for temporary files
+base=/tmp/$(basename $0).$$ 
+
+# Ensure cleanup of temporary files on exit
+trap cleanup EXIT
+cleanup() {
+   \rm -f $base.*
+}
+
+if [[ $# != 3 ]]; then
+   echo "$0 mfcc_order input.wav output.lp"
+   exit 1
+fi
+
+mfcc_order=$1
+inputfile=$2
+outputfile=$3
+
+UBUNTU_SPTK=1
+if [[ $UBUNTU_SPTK == 1 ]]; then
+   # In case you install SPTK using debian package (apt-get)
+   X2X="sptk x2x"
+   FRAME="sptk frame"
+   MFCC= "sptk mfcc"
+else
+   # or install SPTK building it from its source
+   X2X="x2x"
+   FRAME="frame"
+   MFCC="mfcc"
+fi
+
+# Main command for feature extration
+sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 |
+	$MFCC -l 240 -m $mfcc_order -s 8000 > $base.mfcc
+
+# Our array files need a header with the number of cols and rows:
+ncol=$((mfcc_order))
+nrow=`$X2X +fa < $base.mfcc | wc -l | perl -ne 'print $_/'$ncol', "\n";'`
+
+# Build fmatrix file by placing nrow and ncol in front, and the data after them
+echo $nrow $ncol | $X2X +aI > $outputfile
+cat $base.mfcc >> $outputfile
+
+exit
+
+</code>
 
 ### Extracción de características.
 

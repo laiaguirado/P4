@@ -1,0 +1,24 @@
+Build started at 2020-05-02T17:04:07.382475
+Main binary: /usr/bin/python3
+Python system: Linux
+The Meson build system
+Version: 0.45.1
+Source dir: /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4
+Build dir: /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/debug
+Build type: native build
+Project name: Práctica 4 de PAV - reconocimiento y verificación del locutor
+Sanity testing C++ compiler: c++
+Is cross compiler: False.
+Sanity check compiler command line: c++ /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/debug/meson-private/sanitycheckcpp.cc -o /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/debug/meson-private/sanitycheckcpp.exe
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command: /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/debug/meson-private/sanitycheckcpp.exe
+Native C++ compiler: c++ (gcc 7.4.0 "c++ (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0")
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+
+src/meson.build:14:4: ERROR: File gmm/gmm_classify.cpp does not exist.
