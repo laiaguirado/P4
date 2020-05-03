@@ -47,7 +47,7 @@ Primero se extraen las características necesarias de la señal:
   * $FRAME -l 240 -p 80 : divide la señal de entrada en tramas de 240 muestras con desplazamiento de ventana de 80 muestras
   * $WINDOW -l 240 -L 240 : Multiplica cada trama por una ventana Blackman con 240 muestras por trama tanto del fichero de entrada como del fichero de salida.
   * $LPC -l 240 -m $lpc_order : Calcula los lpc_order primeros coeficientes de predicción lineal, con 240 muestras por trama y la variable $lpc_order indica el orden del LPC.
-  * >$base.lp: la redirección permite redirigir la salida de un comando a un fichero que en este caso es base.lp
+  * $base.lp: la redirección permite redirigir la salida de un comando a un fichero que en este caso es base.lp
 Para realizar todos estos comandos se utiliza el encadenado que hace que la salida estándar de un comando se utilice como la entrada estándar del siguiente.
 En el fichero de formato *fmatrix* se realiza la parametrización de una señal de voz usando coeficientes de predicción lineal, en el que hay que poner el número de filas y de columnas, seguidos por los datos.
   * El número de columnas (igual al número de coeficientes) se calcula a partir del orden del predictor lineal que es igual a uno más el orden ya que en el primer elemento del vector se almacena la ganancia de predicción.
