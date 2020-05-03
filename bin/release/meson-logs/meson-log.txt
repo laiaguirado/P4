@@ -1,4 +1,4 @@
-Build started at 2020-05-03T16:23:43.939188
+Build started at 2020-05-03T19:42:30.552338
 Main binary: /usr/bin/python3
 Python system: Linux
 The Meson build system
@@ -20,5 +20,7 @@ Running test binary command: /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/re
 Native C++ compiler: c++ (gcc 7.4.0 "c++ (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0")
 Build machine cpu family: x86_64
 Build machine cpu: x86_64
-
-src/meson.build:14:4: ERROR: File gmm/gmm_classify.cpp does not exist.
+Program doxygen found: YES (/usr/bin/doxygen)
+Configuring Doxyfile using configuration
+Build targets in project: 17
+Found ninja-1.8.2 at /usr/bin/ninja

@@ -3,3 +3,5 @@ lp/
 lpcc/
 mfcc/
 gmm/
+
+!src/gmm
