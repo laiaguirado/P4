@@ -156,6 +156,14 @@ build scripts/wav2lp: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P
  COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2lp.sh /home/laiaguirado/PAV/bin/wav2lp
  description = Generating$ wav2lp.sh$ with$ a$ custom$ command.
 
+build scripts/wav2lpcc: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2lpcc.sh
+ COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2lpcc.sh /home/laiaguirado/PAV/bin/wav2lpcc
+ description = Generating$ wav2lpcc.sh$ with$ a$ custom$ command.
+
+build scripts/wav2mfcc: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2mfcc.sh
+ COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2mfcc.sh /home/laiaguirado/PAV/bin/wav2mfcc
+ description = Generating$ wav2mfcc.sh$ with$ a$ custom$ command.
+
 build meson-doc: CUSTOM_COMMAND 
  COMMAND = /usr/bin/python3 /usr/bin/meson --internal commandrunner /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4 /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release src/doxyfile /usr/bin/python3 /usr/bin/meson /usr/bin/doxygen /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release/src/doxyfile/Doxyfile
  description = Running$ external$ command$ doc.
@@ -225,7 +233,7 @@ build meson-uninstall: CUSTOM_COMMAND PHONY
 
 build uninstall: phony meson-uninstall
 
-build all: phony src/pav/libpav.a src/gmm_classify src/gmm_show src/gmm_train src/gmm_verify src/pearson src/fmatrix_cut src/fmatrix_show scripts/run_spkid scripts/plot_gmm_feat scripts/spk_verif_score scripts/wav2lp pav_spkid_pytorch/make_spk2idx pav_spkid_pytorch/test_nn pav_spkid_pytorch/train_nn pav_spkid_pytorch/utils
+build all: phony src/pav/libpav.a src/gmm_classify src/gmm_show src/gmm_train src/gmm_verify src/pearson src/fmatrix_cut src/fmatrix_show scripts/run_spkid scripts/plot_gmm_feat scripts/spk_verif_score scripts/wav2lp scripts/wav2lpcc scripts/wav2mfcc pav_spkid_pytorch/make_spk2idx pav_spkid_pytorch/test_nn pav_spkid_pytorch/train_nn pav_spkid_pytorch/utils
 
 default all
 

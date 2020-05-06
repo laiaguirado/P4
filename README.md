@@ -77,18 +77,39 @@ ejercicios indicados.
 - Inserte una imagen mostrando la dependencia entre los coeficientes 2 y 3 de las tres parametrizaciones
   para una señal de prueba.
   
+  Para el caso de la parametrización LP hemos obtenido:
+  <img src="img/representacio_lp.PNG" width="640" align="center">
+
+  Para el caso de la parametrización LPCC hemos obtenido:
+
+
+  Para el caso de la parametrización MFCC hemos obtenido:
+  <img src="img/representacio_mfcc.PNG" width="640" align="center">
+
   + ¿Cuál de ellas le parece que contiene más información?
 
 - Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los
   parámetros 2 y 3, y rellene la tabla siguiente con los valores obtenidos.
 
-  |                        | LP   | LPCC | MFCC |
-  |------------------------|:----:|:----:|:----:|
-  | &rho;<sub>x</sub>[2,3] |      |      |      |
+  |                        |      LP     |     LPCC    |    MFCC     |
+  |------------------------|:-----------:|:-----------:|:-----------:|
+  | &rho;<sub>x</sub>[2,3] |  -0.872284  |             |  -0.312565  |
   
   + Compare los resultados de <code>pearson</code> con los obtenidos gráficamente.
   
+    Un valor absoluto de rho cercano a 1 indica que los dos coeficientes están muy correladas entre sí. 
+    Por ejemplo, el valor de LP, que es cercano a 1, implica que conociendo uno de los dos podemos determinar el valor del otro, por lo que la información conjunta proporcionada por las dos componentes es prácticamente la misma que la proporcionada por sólo una.
+    
+    Un valor absoluto de rho cercano a 0 indica que los dos coeficientes están poco correladas entre sí. 
+    Por ejemplo, el valor de MFCC, que es cercano a 0, implica que la información conjunta proporcionada por ambas es el doble de la proporcionada por sólo una de ellas.
+
+    Por lo que podemos ver igual que en las gráficas obtenidas anteriormente que la parametrización LP es bastante correlada y la parametrización MFCC no lo es tanto.
+    
+  
 - Según la teoría, ¿qué parámetros considera adecuados para el cálculo de los coeficientes LPCC y MFCC?
+
+  + Para los coeficientes LPCC se usa lpc_order=8, como esta definido en la función compute_lp(), y el número de cepstrum es igual a 3*P/2 donde P=lpc_order=8 , por lo tanto, nceps=12.
+  + Para los coeficientes MFCC se usan los primeros 13 coefficientes, por lo tanto mfcc_order=13
 
 ### Entrenamiento y visualización de los GMM.
 
