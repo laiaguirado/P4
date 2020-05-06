@@ -88,6 +88,8 @@ ejercicios indicados.
 
   + ¿Cuál de ellas le parece que contiene más información?
 
+    Creo que contiene más información la parametrización MFCC ya que los coeficientes estan menos correlados y por lo tanto, a partir de un coeficiente no podemos determinar el otro, por lo que hay más información necesaria.
+
 - Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los
   parámetros 2 y 3, y rellene la tabla siguiente con los valores obtenidos.
 
@@ -96,7 +98,7 @@ ejercicios indicados.
   | &rho;<sub>x</sub>[2,3] |  -0.872284  |             |  -0.312565  |
   
   + Compare los resultados de <code>pearson</code> con los obtenidos gráficamente.
-  
+
     Un valor absoluto de rho cercano a 1 indica que los dos coeficientes están muy correladas entre sí. 
     Por ejemplo, el valor de LP, que es cercano a 1, implica que conociendo uno de los dos podemos determinar el valor del otro, por lo que la información conjunta proporcionada por las dos componentes es prácticamente la misma que la proporcionada por sólo una.
     
