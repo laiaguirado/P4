@@ -117,7 +117,8 @@ def plotGMM(fileGMM, xDim, yDim, percents, colorGmm, filesFeat=None, colorFeat=N
     # en el percentil más estrecho sea 1000. Calculamos el más estrecho como el
     # valor mínimo de p*(1-p)
 
-    numSmp = np.ceil(np.max(1000 / (percents * (1 - percents))) ** 0.5)
+    # numSmp = np.ceil(np.max(1000 / (percents * (1 - percents))) ** 0.5)
+    numSmp = int(np.ceil(np.max(1000 / (percents * (1 - percents))) ** 0.5 ))
 
     x = np.linspace(min_[0], max_[0], numSmp)
     y = np.linspace(min_[1], max_[1], numSmp)
