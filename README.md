@@ -63,7 +63,8 @@ ejercicios indicados.
 
   * LPC2C : transforma LPC to cepstrum. Se puede elegir el orden del LPC y el orden del cepstrum.
 
-  <code>sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $LPC -l 240 -m $lpc_order | $LPC2C -m $lpc_orden -M $nceps > $base.cep</code>
+  <code>sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 |
+	 $LPC -l 240 -m $lpc_order | $LPC2C -m $lpc_order -M $nceps > $base.lpcc</code>
 
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales en escala Mel (MFCC) en
   su fichero <code>scripts/wav2mfcc.sh</code>:
@@ -81,7 +82,7 @@ ejercicios indicados.
   <img src="img/representacio_lp.PNG" width="640" align="center">
 
   Para el caso de la parametrización LPCC hemos obtenido:
-
+  <img src="img/representacio_lpcc.PNG" width="640" align="center">
 
   Para el caso de la parametrización MFCC hemos obtenido:
   <img src="img/representacio_mfcc.PNG" width="640" align="center">
@@ -95,7 +96,7 @@ ejercicios indicados.
 
   |                        |      LP     |     LPCC    |    MFCC     |
   |------------------------|:-----------:|:-----------:|:-----------:|
-  | &rho;<sub>x</sub>[2,3] |  -0.872284  |             |  -0.312565  |
+  | &rho;<sub>x</sub>[2,3] |  -0.872284  |   0.217792  |  -0.312565  |
   
   + Compare los resultados de <code>pearson</code> con los obtenidos gráficamente.
 
@@ -103,9 +104,9 @@ ejercicios indicados.
     Por ejemplo, el valor de LP, que es cercano a 1, implica que conociendo uno de los dos podemos determinar el valor del otro, por lo que la información conjunta proporcionada por las dos componentes es prácticamente la misma que la proporcionada por sólo una.
     
     Un valor absoluto de rho cercano a 0 indica que los dos coeficientes están poco correladas entre sí. 
-    Por ejemplo, el valor de MFCC, que es cercano a 0, implica que la información conjunta proporcionada por ambas es el doble de la proporcionada por sólo una de ellas.
+    Por ejemplo, el valor de LPCC o de MFCC, que son cercanos a 0, implica que la información conjunta proporcionada por ambas es el doble de la proporcionada por sólo una de ellas.
 
-    Por lo que podemos ver igual que en las gráficas obtenidas anteriormente que la parametrización LP es bastante correlada y la parametrización MFCC no lo es tanto.
+    Por lo que podemos ver igual que en las gráficas obtenidas anteriormente que la parametrización LP es bastante correlada y la parametrización LPCC y MFCC no lo son tanto.
     
   
 - Según la teoría, ¿qué parámetros considera adecuados para el cálculo de los coeficientes LPCC y MFCC?
