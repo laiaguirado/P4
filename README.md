@@ -71,7 +71,7 @@ ejercicios indicados.
 
   * MFCC: analisis MFCC. Se puede elegir entre otras cosas el numero l de muestras por trama, el orden m del cepstrum, el coefficiente de liftering, el orden del canal para el mel-filter bank o la frecuencia de muestreo.
 
-  <code>sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $MFCC -l 240 -m $mfcc_order -s 8000 > $base.mfcc</code>
+  <code>sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $MFCC -s 8000 -n $nfilter -l 240 -m $mfcc_order > $base.mfcc </code>
 
 ### Extracción de características.
 
@@ -111,7 +111,7 @@ ejercicios indicados.
   
 - Según la teoría, ¿qué parámetros considera adecuados para el cálculo de los coeficientes LPCC y MFCC?
 
-  + Para los coeficientes LPCC se usa lpc_order=8, como esta definido en la función compute_lp(), y el número de cepstrum es igual a 3*P/2 donde P=lpc_order=8 , por lo tanto, nceps=12. ACTUALIZAR!!!!!!!
+  + Para los coeficientes LPCC se usa lpc_order=8, como esta definido en la función compute_lp(), y el número de cepstrum es igual a 3*P/2 donde P=lpc_order=8 , por lo tanto, nceps=12. Finalmente, hemos decidido incrementar estos valores para obtener mejores resultados.
   + Para los coeficientes MFCC se usan los primeros 13 coefficientes + un 50% más, por lo tanto mfcc_order=19. I el numero de filtros suele ir de 24 a 40, por lo que usamos un valor intermedio de nfilter=30
 
 ### Entrenamiento y visualización de los GMM.
@@ -121,15 +121,15 @@ Complete el código necesario para entrenar modelos GMM.
 - Inserte una gráfica que muestre la función de densidad de probabilidad modelada por el GMM de un locutor
   para sus dos primeros coeficientes de MFCC.
 
-  <img src="img/dendidadgmm.PNG" width="640" align="center">
+  <img src="img/densidadgmm.PNG" width="640" align="center">
   
 - Inserte una gráfica que permita comparar los modelos y poblaciones de dos locutores distintos (la gŕafica
   de la página 20 del enunciado puede servirle de referencia del resultado deseado). Analice la capacidad
   del modelado GMM para diferenciar las señales de uno y otro.
 
-  | <img src="img/densitat1.PNG" width="640" > | <img src="img/densitat2.PNG" width="640" > |
+  | <img src="img/densidad1.PNG" width="640" > | <img src="img/densidad2.PNG" width="640" > |
   | ------------ | ------------- |
-  | <img src="img/densitat3.PNG" width="640" > | <img src="img/densitat4.PNG" width="640" > |
+  | <img src="img/densidad3.PNG" width="640" > | <img src="img/densidad4.PNG" width="640" > |
 
 
 ### Reconocimiento del locutor.
