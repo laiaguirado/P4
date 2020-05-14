@@ -89,14 +89,14 @@ ejercicios indicados.
 
   + ¿Cuál de ellas le parece que contiene más información?
 
-    Creo que contiene más información la parametrización MFCC ya que los coeficientes estan menos correlados y por lo tanto, a partir de un coeficiente no podemos determinar el otro, por lo que hay más información necesaria.
+    Creo que contiene más información la parametrización LPCC y la MFCC ya que los coeficientes estan menos correlados y por lo tanto, a partir de un coeficiente no podemos determinar el otro, por lo que hay más información necesaria.
 
 - Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los
   parámetros 2 y 3, y rellene la tabla siguiente con los valores obtenidos.
 
   |                        |      LP     |     LPCC    |    MFCC     |
   |------------------------|:-----------:|:-----------:|:-----------:|
-  | &rho;<sub>x</sub>[2,3] |  -0.872284  |   0.217792  |  -0.312565  |
+  | &rho;<sub>x</sub>[2,3] |  -0.872284  |   0.150077  |  -0.59706   |
   
   + Compare los resultados de <code>pearson</code> con los obtenidos gráficamente.
 
@@ -104,15 +104,15 @@ ejercicios indicados.
     Por ejemplo, el valor de LP, que es cercano a 1, implica que conociendo uno de los dos podemos determinar el valor del otro, por lo que la información conjunta proporcionada por las dos componentes es prácticamente la misma que la proporcionada por sólo una.
     
     Un valor absoluto de rho cercano a 0 indica que los dos coeficientes están poco correladas entre sí. 
-    Por ejemplo, el valor de LPCC o de MFCC, que son cercanos a 0, implica que la información conjunta proporcionada por ambas es el doble de la proporcionada por sólo una de ellas.
+    Por ejemplo, el valor de LPCC, que es cercano a 0, implica que la información conjunta proporcionada por ambas es el doble de la proporcionada por sólo una de ellas.
 
-    Por lo que podemos ver igual que en las gráficas obtenidas anteriormente que la parametrización LP es bastante correlada y la parametrización LPCC y MFCC no lo son tanto.
+    Por lo que podemos ver igual que en las gráficas obtenidas anteriormente que la parametrización LP es bastante correlada y la parametrización LPCC y MFCC no lo son tanto. Aunque son los coeficientes vemos que la menos correlada es la parametrización LPCC.
     
   
 - Según la teoría, ¿qué parámetros considera adecuados para el cálculo de los coeficientes LPCC y MFCC?
 
-  + Para los coeficientes LPCC se usa lpc_order=8, como esta definido en la función compute_lp(), y el número de cepstrum es igual a 3*P/2 donde P=lpc_order=8 , por lo tanto, nceps=12.
-  + Para los coeficientes MFCC se usan los primeros 13 coefficientes, por lo tanto mfcc_order=13
+  + Para los coeficientes LPCC se usa lpc_order=8, como esta definido en la función compute_lp(), y el número de cepstrum es igual a 3*P/2 donde P=lpc_order=8 , por lo tanto, nceps=12. ACTUALIZAR!!!!!!!
+  + Para los coeficientes MFCC se usan los primeros 13 coefficientes + un 50% más, por lo tanto mfcc_order=19. I el numero de filtros suele ir de 24 a 40, por lo que usamos un valor intermedio de nfilter=30
 
 ### Entrenamiento y visualización de los GMM.
 
@@ -120,10 +120,17 @@ Complete el código necesario para entrenar modelos GMM.
 
 - Inserte una gráfica que muestre la función de densidad de probabilidad modelada por el GMM de un locutor
   para sus dos primeros coeficientes de MFCC.
+
+  <img src="img/dendidadgmm.PNG" width="640" align="center">
   
 - Inserte una gráfica que permita comparar los modelos y poblaciones de dos locutores distintos (la gŕafica
   de la página 20 del enunciado puede servirle de referencia del resultado deseado). Analice la capacidad
   del modelado GMM para diferenciar las señales de uno y otro.
+
+  | <img src="img/densitat1.PNG" width="640" > | <img src="img/densitat2.PNG" width="640" > |
+  | ------------ | ------------- |
+  | <img src="img/densitat3.PNG" width="640" > | <img src="img/densitat4.PNG" width="640" > |
+
 
 ### Reconocimiento del locutor.
 
@@ -131,6 +138,15 @@ Complete el código necesario para realizar reconociminto del locutor y optimice
 
 - Inserte una tabla con la tasa de error obtenida en el reconocimiento de los locutores de la base de datos
   SPEECON usando su mejor sistema de reconocimiento para los parámetros LP, LPCC y MFCC.
+
+  Para el caso de la parametrización LP hemos obtenido:
+  <img src="img/lp_percentatge.PNG" width="640" align="center">
+  
+  Para el caso de la parametrización LPCC hemos obtenido:
+  <img src="img/lpcc_percentatge.PNG" width="640" align="center">
+
+  Para el caso de la parametrización MFCC hemos obtenido:
+  <img src="img/mfcc_percentatge.PNG" width="640" align="center">
 
 ### Verificación del locutor.
 

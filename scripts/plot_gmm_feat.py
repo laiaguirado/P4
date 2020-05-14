@@ -141,6 +141,7 @@ def plotGMM(fileGMM, xDim, yDim, percents, colorGmm, filesFeat=None, colorFeat=N
     ax.clabel(CS, inline=1, fontsize=14, fmt=fmt)
 
     plt.title(f'Region coverage predicted by {fileGMM}')
+    #plt.title(f'GMM: {fileGMM}  LOC: {fileFeat}')
     plt.axis('tight')
     plt.axis(limits)
     plt.show()
