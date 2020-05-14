@@ -96,7 +96,7 @@ ejercicios indicados.
 
   |                        |      LP     |     LPCC    |    MFCC     |
   |------------------------|:-----------:|:-----------:|:-----------:|
-  | &rho;<sub>x</sub>[2,3] |  -0.872284  |   0.150077  |  -0.59706   |
+  | &rho;<sub>x</sub>[2,3] |  -0.872284  |   0.160985  |  -0.59706   |
   
   + Compare los resultados de <code>pearson</code> con los obtenidos gráficamente.
 
@@ -112,7 +112,7 @@ ejercicios indicados.
 - Según la teoría, ¿qué parámetros considera adecuados para el cálculo de los coeficientes LPCC y MFCC?
 
   + Para los coeficientes LPCC se usa lpc_order=8, como esta definido en la función compute_lp(), y el número de cepstrum es igual a 3*P/2 donde P=lpc_order=8 , por lo tanto, nceps=12. Finalmente, hemos decidido incrementar estos valores para obtener mejores resultados.
-  + Para los coeficientes MFCC se usan los primeros 13 coefficientes + un 50% más, por lo tanto mfcc_order=19. I el numero de filtros suele ir de 24 a 40, por lo que usamos un valor intermedio de nfilter=30
+  + Para los coeficientes MFCC se usan los primeros 13 coefficientes + un 50% más, por lo tanto mfcc_order=19. I el numero de filtros suele ir de 24 a 40, por lo que usamos un valor intermedio de nfilter=30.
 
 ### Entrenamiento y visualización de los GMM.
 
