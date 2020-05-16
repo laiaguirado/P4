@@ -1,10 +1,10 @@
 # List of files installed by Meson
 # Does not contain files installed by custom scripts.
-/home/laiaguirado/PAV/lib/libpav.a
-/home/laiaguirado/PAV/bin/gmm_classify
-/home/laiaguirado/PAV/bin/gmm_show
-/home/laiaguirado/PAV/bin/gmm_train
-/home/laiaguirado/PAV/bin/gmm_verify
-/home/laiaguirado/PAV/bin/pearson
-/home/laiaguirado/PAV/bin/fmatrix_cut
-/home/laiaguirado/PAV/bin/fmatrix_show
+/home/alba/PAV/lib/libpav.a
+/home/alba/PAV/bin/gmm_classify
+/home/alba/PAV/bin/gmm_show
+/home/alba/PAV/bin/gmm_train
+/home/alba/PAV/bin/gmm_verify
+/home/alba/PAV/bin/pearson
+/home/alba/PAV/bin/fmatrix_cut
+/home/alba/PAV/bin/fmatrix_show

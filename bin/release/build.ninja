@@ -50,7 +50,7 @@ rule CUSTOM_COMMAND_DEP
  restat = 1
 
 rule REGENERATE_BUILD
- command = /usr/bin/python3 /usr/bin/meson --internal regenerate /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4 /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release --backend ninja
+ command = /usr/bin/python3 /usr/bin/meson --internal regenerate /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4 /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release --backend ninja
  description = Regenerating build files.
  generator = 1
 
@@ -140,51 +140,51 @@ build src/fmatrix_show@exe/fmatrix_fmatrix_show.cpp.o: cpp_COMPILER ../../src/fm
 build src/fmatrix_show: cpp_LINKER src/fmatrix_show@exe/fmatrix_fmatrix_show.cpp.o | src/pav/libpav.a
  LINK_ARGS = -Wl,--no-undefined -Wl,--as-needed -Wl,-O1 -Wl,--start-group src/pav/libpav.a -lm -lsndfile -Wl,--end-group
 
-build scripts/run_spkid: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/run_spkid.sh
- COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/run_spkid.sh /home/laiaguirado/PAV/bin/run_spkid
+build scripts/run_spkid: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/run_spkid.sh
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/run_spkid.sh /home/alba/PAV/bin/run_spkid
  description = Generating$ run_spkid.sh$ with$ a$ custom$ command.
 
-build scripts/plot_gmm_feat: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/plot_gmm_feat.py
- COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/plot_gmm_feat.py /home/laiaguirado/PAV/bin/plot_gmm_feat
+build scripts/plot_gmm_feat: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/plot_gmm_feat.py
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/plot_gmm_feat.py /home/alba/PAV/bin/plot_gmm_feat
  description = Generating$ plot_gmm_feat.py$ with$ a$ custom$ command.
 
-build scripts/spk_verif_score: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/spk_verif_score.pl
- COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/spk_verif_score.pl /home/laiaguirado/PAV/bin/spk_verif_score
+build scripts/spk_verif_score: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/spk_verif_score.pl
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/spk_verif_score.pl /home/alba/PAV/bin/spk_verif_score
  description = Generating$ spk_verif_score.pl$ with$ a$ custom$ command.
 
-build scripts/wav2lp: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2lp.sh
- COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2lp.sh /home/laiaguirado/PAV/bin/wav2lp
+build scripts/wav2lp: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2lp.sh
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2lp.sh /home/alba/PAV/bin/wav2lp
  description = Generating$ wav2lp.sh$ with$ a$ custom$ command.
 
-build scripts/wav2lpcc: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2lpcc.sh
- COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2lpcc.sh /home/laiaguirado/PAV/bin/wav2lpcc
+build scripts/wav2lpcc: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2lpcc.sh
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2lpcc.sh /home/alba/PAV/bin/wav2lpcc
  description = Generating$ wav2lpcc.sh$ with$ a$ custom$ command.
 
-build scripts/wav2mfcc: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2mfcc.sh
- COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/scripts/wav2mfcc.sh /home/laiaguirado/PAV/bin/wav2mfcc
+build scripts/wav2mfcc: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2mfcc.sh
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2mfcc.sh /home/alba/PAV/bin/wav2mfcc
  description = Generating$ wav2mfcc.sh$ with$ a$ custom$ command.
 
 build meson-doc: CUSTOM_COMMAND 
- COMMAND = /usr/bin/python3 /usr/bin/meson --internal commandrunner /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4 /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release src/doxyfile /usr/bin/python3 /usr/bin/meson /usr/bin/doxygen /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release/src/doxyfile/Doxyfile
+ COMMAND = /usr/bin/python3 /usr/bin/meson --internal commandrunner /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4 /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release src/doxyfile /usr/bin/python3 /usr/bin/meson /usr/bin/doxygen /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release/src/doxyfile/Doxyfile
  description = Running$ external$ command$ doc.
  pool = console
 
 build doc: phony meson-doc
 
-build pav_spkid_pytorch/make_spk2idx: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/pav_spkid_pytorch/make_spk2idx.py
- COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/pav_spkid_pytorch/make_spk2idx.py /home/laiaguirado/PAV/bin/make_spk2idx
+build pav_spkid_pytorch/make_spk2idx: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/pav_spkid_pytorch/make_spk2idx.py
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/pav_spkid_pytorch/make_spk2idx.py /home/alba/PAV/bin/make_spk2idx
  description = Generating$ make_spk2idx.py$ with$ a$ custom$ command.
 
-build pav_spkid_pytorch/test_nn: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/pav_spkid_pytorch/test_nn.py
- COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/pav_spkid_pytorch/test_nn.py /home/laiaguirado/PAV/bin/test_nn
+build pav_spkid_pytorch/test_nn: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/pav_spkid_pytorch/test_nn.py
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/pav_spkid_pytorch/test_nn.py /home/alba/PAV/bin/test_nn
  description = Generating$ test_nn.py$ with$ a$ custom$ command.
 
-build pav_spkid_pytorch/train_nn: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/pav_spkid_pytorch/train_nn.py
- COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/pav_spkid_pytorch/train_nn.py /home/laiaguirado/PAV/bin/train_nn
+build pav_spkid_pytorch/train_nn: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/pav_spkid_pytorch/train_nn.py
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/pav_spkid_pytorch/train_nn.py /home/alba/PAV/bin/train_nn
  description = Generating$ train_nn.py$ with$ a$ custom$ command.
 
-build pav_spkid_pytorch/utils: CUSTOM_COMMAND /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/pav_spkid_pytorch/utils.py
- COMMAND = ln -sf /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/pav_spkid_pytorch/utils.py /home/laiaguirado/PAV/bin/utils
+build pav_spkid_pytorch/utils: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/pav_spkid_pytorch/utils.py
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/pav_spkid_pytorch/utils.py /home/alba/PAV/bin/utils
  description = Generating$ utils.py$ with$ a$ custom$ command.
 
 # Test rules
@@ -207,14 +207,14 @@ build benchmark: phony meson-benchmark
 
 build meson-install: CUSTOM_COMMAND PHONY | all
  DESC = Installing$ files.
- COMMAND = /usr/bin/python3 /usr/bin/meson --internal install /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release/meson-private/install.dat
+ COMMAND = /usr/bin/python3 /usr/bin/meson --internal install /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release/meson-private/install.dat
  pool = console
 
 build install: phony meson-install
 
 build meson-dist: CUSTOM_COMMAND PHONY
  DESC = Creating$ source$ packages
- COMMAND = /usr/bin/python3 /usr/bin/meson --internal dist /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4 /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release /usr/bin/python3 /usr/bin/meson
+ COMMAND = /usr/bin/python3 /usr/bin/meson --internal dist /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4 /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release /usr/bin/python3 /usr/bin/meson
  pool = console
 
 build dist: phony meson-dist
@@ -222,7 +222,7 @@ build dist: phony meson-dist
 # Suffix
 
 build meson-scan-build: CUSTOM_COMMAND PHONY
- COMMAND = /usr/bin/python3 /usr/bin/meson --internal scanbuild /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4 /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release /usr/bin/python3 /usr/bin/meson
+ COMMAND = /usr/bin/python3 /usr/bin/meson --internal scanbuild /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4 /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release /usr/bin/python3 /usr/bin/meson
  pool = console
 
 build scan-build: phony meson-scan-build
@@ -240,7 +240,7 @@ default all
 build clean: phony meson-clean
 
 build meson-clean-ctlist: CUSTOM_COMMAND PHONY
- COMMAND = /usr/bin/python3 /usr/bin/meson --internal cleantrees /mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release/meson-private/cleantrees.dat
+ COMMAND = /usr/bin/python3 /usr/bin/meson --internal cleantrees /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release/meson-private/cleantrees.dat
  description = Cleaning$ custom$ target$ directories.
 
 build clean-ctlist: phony meson-clean-ctlist

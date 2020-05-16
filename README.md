@@ -156,6 +156,16 @@ Complete el código necesario para realizar verificación del locutor y optimice
   de verificación de SPEECON. La tabla debe incluir el umbral óptimo, el número de falsas alarmas y de
   pérdidas, y el score obtenido usando la parametrización que mejor resultado le hubiera dado en la tarea
   de reconocimiento.
+  
+  La parametrización que ha dado mejor resultado es la LPCC:
+
+        ==============================================
+        THR: 1.4422363447395
+        Missed:     79/250=0.3160
+        FalseAlarm: 1/1000=0.0010
+        ----------------------------------------------
+        ==> CostDetection: 41.5
+        ==============================================
  
 ### Test final y trabajo de ampliación.
 

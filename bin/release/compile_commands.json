@@ -1,71 +1,71 @@
 [
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/pav/pav@sta -Isrc/pav -I../../src/pav -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -fPIC -MD -MQ 'src/pav/pav@sta/digital_filter.cpp.o' -MF 'src/pav/pav@sta/digital_filter.cpp.o.d' -o 'src/pav/pav@sta/digital_filter.cpp.o' -c ../../src/pav/digital_filter.cpp",
     "file": "../../src/pav/digital_filter.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/pav/pav@sta -Isrc/pav -I../../src/pav -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -fPIC -MD -MQ 'src/pav/pav@sta/filename.cpp.o' -MF 'src/pav/pav@sta/filename.cpp.o.d' -o 'src/pav/pav@sta/filename.cpp.o' -c ../../src/pav/filename.cpp",
     "file": "../../src/pav/filename.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/pav/pav@sta -Isrc/pav -I../../src/pav -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -fPIC -MD -MQ 'src/pav/pav@sta/wavfile_mono.cpp.o' -MF 'src/pav/pav@sta/wavfile_mono.cpp.o.d' -o 'src/pav/pav@sta/wavfile_mono.cpp.o' -c ../../src/pav/wavfile_mono.cpp",
     "file": "../../src/pav/wavfile_mono.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/pav/pav@sta -Isrc/pav -I../../src/pav -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -fPIC -MD -MQ 'src/pav/pav@sta/keyvalue.cpp.o' -MF 'src/pav/pav@sta/keyvalue.cpp.o.d' -o 'src/pav/pav@sta/keyvalue.cpp.o' -c ../../src/pav/keyvalue.cpp",
     "file": "../../src/pav/keyvalue.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/pav/pav@sta -Isrc/pav -I../../src/pav -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -fPIC -MD -MQ 'src/pav/pav@sta/gmm.cpp.o' -MF 'src/pav/pav@sta/gmm.cpp.o.d' -o 'src/pav/pav@sta/gmm.cpp.o' -c ../../src/pav/gmm.cpp",
     "file": "../../src/pav/gmm.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/pav/pav@sta -Isrc/pav -I../../src/pav -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -fPIC -MD -MQ 'src/pav/pav@sta/gmm_vq.cpp.o' -MF 'src/pav/pav@sta/gmm_vq.cpp.o.d' -o 'src/pav/pav@sta/gmm_vq.cpp.o' -c ../../src/pav/gmm_vq.cpp",
     "file": "../../src/pav/gmm_vq.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/pav/pav@sta -Isrc/pav -I../../src/pav -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -fPIC -MD -MQ 'src/pav/pav@sta/docopt_cpp_docopt.cpp.o' -MF 'src/pav/pav@sta/docopt_cpp_docopt.cpp.o.d' -o 'src/pav/pav@sta/docopt_cpp_docopt.cpp.o' -c ../../src/pav/docopt_cpp/docopt.cpp",
     "file": "../../src/pav/docopt_cpp/docopt.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/gmm_classify@exe -Isrc -I../../src -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/gmm_classify@exe/gmm_gmm_classify.cpp.o' -MF 'src/gmm_classify@exe/gmm_gmm_classify.cpp.o.d' -o 'src/gmm_classify@exe/gmm_gmm_classify.cpp.o' -c ../../src/gmm/gmm_classify.cpp",
     "file": "../../src/gmm/gmm_classify.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/gmm_show@exe -Isrc -I../../src -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/gmm_show@exe/gmm_gmm_show.cpp.o' -MF 'src/gmm_show@exe/gmm_gmm_show.cpp.o.d' -o 'src/gmm_show@exe/gmm_gmm_show.cpp.o' -c ../../src/gmm/gmm_show.cpp",
     "file": "../../src/gmm/gmm_show.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/gmm_train@exe -Isrc -I../../src -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/gmm_train@exe/gmm_gmm_train.cpp.o' -MF 'src/gmm_train@exe/gmm_gmm_train.cpp.o.d' -o 'src/gmm_train@exe/gmm_gmm_train.cpp.o' -c ../../src/gmm/gmm_train.cpp",
     "file": "../../src/gmm/gmm_train.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/gmm_verify@exe -Isrc -I../../src -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/gmm_verify@exe/gmm_gmm_verify.cpp.o' -MF 'src/gmm_verify@exe/gmm_gmm_verify.cpp.o.d' -o 'src/gmm_verify@exe/gmm_gmm_verify.cpp.o' -c ../../src/gmm/gmm_verify.cpp",
     "file": "../../src/gmm/gmm_verify.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/pearson@exe -Isrc -I../../src -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/pearson@exe/pearson_pearson.cpp.o' -MF 'src/pearson@exe/pearson_pearson.cpp.o.d' -o 'src/pearson@exe/pearson_pearson.cpp.o' -c ../../src/pearson/pearson.cpp",
     "file": "../../src/pearson/pearson.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/fmatrix_cut@exe -Isrc -I../../src -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/fmatrix_cut@exe/fmatrix_fmatrix_cut.cpp.o' -MF 'src/fmatrix_cut@exe/fmatrix_fmatrix_cut.cpp.o.d' -o 'src/fmatrix_cut@exe/fmatrix_fmatrix_cut.cpp.o' -c ../../src/fmatrix/fmatrix_cut.cpp",
     "file": "../../src/fmatrix/fmatrix_cut.cpp"
   },
   {
-    "directory": "/mnt/c/Users/PC/Documents/TELECOS/PAV/LAB/P4/bin/release",
+    "directory": "/mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release",
     "command": "c++  -Isrc/fmatrix_show@exe -Isrc -I../../src -I../../src/pav/docopt_cpp -I../../src/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/fmatrix_show@exe/fmatrix_fmatrix_show.cpp.o' -MF 'src/fmatrix_show@exe/fmatrix_fmatrix_show.cpp.o.d' -o 'src/fmatrix_show@exe/fmatrix_fmatrix_show.cpp.o' -c ../../src/fmatrix/fmatrix_show.cpp",
     "file": "../../src/fmatrix/fmatrix_show.cpp"
   }

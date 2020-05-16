@@ -158,7 +158,7 @@ for cmd in $*; do
        ## @file
 	   # \TODO
 	   # Implement 'trainworld' in order to get a Universal Background Model for speaker verification
-        gmm_train -i 1 -v 5 -T 0.000001 -N 100 -m 12 -d $w/$FEAT -e $FEAT -g $w/world/$FEAT/world.gmm $lists/verif/users_and_others.train || exit 1
+        gmm_train -i 1 -v 5 -T 0.000001 -N 100 -m 12 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/world.gmm $lists/verif/users_and_others.train || exit 1
 	   # - The name of the world model will be used by gmm_verify in the 'verify' command below.
        #echo "Implement the trainworld option ..."
    elif [[ $cmd == verify ]]; then
