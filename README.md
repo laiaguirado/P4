@@ -56,6 +56,7 @@ ejercicios indicados.
   + El número de filas (igual al número de tramas) depende de la longitud de la señal, la longitud y desplazamiento de la ventana, y la cadena de comandos que se ejecutan para obtener la parametrización. Pero podemos extraer esa información del fichero obtenido. Lo hacemos convirtiendo la señal parametrizada a texto, usando sox +fa, y contando el número de líneas, con el comando de UNIX wc -l.
 
   - ¿Por qué es conveniente usar este formato (u otro parecido)?
+    Los datos se almacenan en nrow filas de ncol columnas, en los que cada fila corresponde a una trama de señal, y cada columna a cada uno de los coeficientes con los se parametriza la trama. Así tenemos todos coeficientes de la señal a analizar en las diferenes columnas y podemos mostrarlos con el programas fmatrix_show y elegir los coeficientes 2 y 3, que son los que nos piden, con fmatrix_cut.
     
 
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales de predicción lineal
@@ -177,7 +178,7 @@ Complete el código necesario para realizar verificación del locutor y optimice
         ==> CostDetection: 58.0
         ==============================================
   Para la parametrización LP el serultado es:
-  
+
       ==============================================
         THR: 1.3520980098306
         Missed:     224/250=0.8960
