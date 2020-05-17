@@ -159,14 +159,32 @@ Complete el código necesario para realizar verificación del locutor y optimice
   
   La parametrización que ha dado mejor resultado es la LPCC:
 
-        ==============================================
-        THR: 1.4422363447395
-        Missed:     79/250=0.3160
-        FalseAlarm: 1/1000=0.0010
+       ==============================================
+        THR: 0.940474564897601
+        Missed:     44/250=0.1760
+        FalseAlarm: 0/1000=0.0000
         ----------------------------------------------
-        ==> CostDetection: 41.5
+        ==> CostDetection: 17.6
+        ==============================================
+
+  La parametrización MFCC  nos da el resultado siguiente:
+      ==============================================
+        THR: 2.33881544478942
+        Missed:     145/250=0.5800
+        FalseAlarm: 0/1000=0.0000
+        ----------------------------------------------
+        ==> CostDetection: 58.0
+        ==============================================
+  Para la parametrización LP el serultado es:
+      ==============================================
+        THR: 1.3520980098306
+        Missed:     224/250=0.8960
+        FalseAlarm: 0/1000=0.0000
+        ----------------------------------------------
+        ==> CostDetection: 89.6
         ==============================================
  
+  Los resultados anteriores se han obenido usando 20 coeficientes. Con 25 coeficientes el resultado para la parametrización MFCC mejora, pero la LPCC empeora mucho. En abmos casos, los resultados para la paramterización LP són los peores.
 ### Test final y trabajo de ampliación.
 
 - Recuerde adjuntar los ficheros `class_test.log` y `verif_test.log` correspondientes a la evaluación
