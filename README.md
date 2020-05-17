@@ -168,6 +168,7 @@ Complete el código necesario para realizar verificación del locutor y optimice
         ==============================================
 
   La parametrización MFCC  nos da el resultado siguiente:
+
       ==============================================
         THR: 2.33881544478942
         Missed:     145/250=0.5800
@@ -176,6 +177,7 @@ Complete el código necesario para realizar verificación del locutor y optimice
         ==> CostDetection: 58.0
         ==============================================
   Para la parametrización LP el serultado es:
+  
       ==============================================
         THR: 1.3520980098306
         Missed:     224/250=0.8960
