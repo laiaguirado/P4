@@ -20,22 +20,31 @@ int read_options(int ArgC, const char *ArgV[], vector<Directory> &input_dirs, ve
 int read_gmms(const Directory &dir, const Ext &ext, const vector<string> &gmm_filenames, vector<GMM> &vgmm);
 
 
-int classify(const vector<GMM> &vgmm, const fmatrix &dat, float &maxlprob) {
-  float  lprob;
+int classify(const vector<vector<GMM>> &mgmm, const vector<fmatrix> &vmat, float &maxlprob) {
+ 
   int maxind  = -1;
+  vector<float> lprob;
   maxlprob = -1e38;
+  float totalprob=0;
 
   //TODO .. assign maxind to the best index of vgmm
   //for each gmm, call logprob. Implement this function in gmm.cpp
-  maxind = 0;
 
-  for(int i=0;i<vgmm.size();i++){
-    lprob = vgmm[i].logprob(dat);
-    if(maxlprob<=lprob){
-      maxlprob=lprob;
-      maxind=i;
+
+  for(int i=0;i<mgmm[0].size();i++){
+    totalprob=0;
+    for (int j=0; j<mgmm.size(); j++){
+      lprob[j] = mgmm[j][i].logprob(vmat[j]); 
+      totalprob= totalprob + lprob[j];
     }
-  }
+    
+    if(maxlprob<=totalprob){
+      maxlprob=totalprob;
+      maxind = i;
+    }
+  
+}
+ 
   return maxind;
 }
 
@@ -71,15 +80,20 @@ int main(int argc, const char *argv[]) {
  
   */
 
-  vector<GMM> vgmm;
-  retv = read_gmms(gmm_dirs[0], gmm_exts[0], gmm_filenames, vgmm);
+   vector<GMM> vgmm;
+   vector<vector<GMM>> mgmm; 
+   mgmm.resize(3); 
+   mgmm[0] = vgmm;
+  retv = read_gmms(gmm_dirs[0], gmm_exts[0], gmm_filenames, mgmm[0]);
   if (retv != 0)
     return usage(argv[0], retv);
+    vector<fmatrix> vfmat; 
 
   ///Read and classify files
   for (unsigned int i=0; i<input_filenames.size(); ++i) {
+    for(unsigned int j=0; j<input_dirs.size(); j++){
     fmatrix dat;
-    string path = input_dirs[0] + input_filenames[i] + input_exts[0];
+    string path = input_dirs[j] + input_filenames[i] + input_exts[j];
     ifstream ifs(path.c_str(), ios::binary);
     if (ifs.good())
       ifs >> dat;
@@ -88,10 +102,12 @@ int main(int argc, const char *argv[]) {
       cerr << "Error reading data file: " << path << endl;
       return usage(argv[0],1);
     }
+      vfmat[j] = dat;
+    }
 
     int nclass;
     float lprob;
-    nclass = classify(vgmm, dat, lprob);
+    nclass = classify(mgmm, vfmat, lprob);
     cout << input_filenames[i] << '\t' << gmm_filenames[nclass] 
 	 << '\t' << lprob << endl; 
   }

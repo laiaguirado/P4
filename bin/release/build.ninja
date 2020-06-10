@@ -144,6 +144,10 @@ build scripts/run_spkid: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV
  COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/run_spkid.sh /home/alba/PAV/bin/run_spkid
  description = Generating$ run_spkid.sh$ with$ a$ custom$ command.
 
+build scripts/run_spkid_din: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/run_spkid_din.sh
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/run_spkid_din.sh /home/alba/PAV/bin/run_spkid_din
+ description = Generating$ run_spkid_din.sh$ with$ a$ custom$ command.
+
 build scripts/plot_gmm_feat: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/plot_gmm_feat.py
  COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/plot_gmm_feat.py /home/alba/PAV/bin/plot_gmm_feat
  description = Generating$ plot_gmm_feat.py$ with$ a$ custom$ command.
@@ -163,6 +167,14 @@ build scripts/wav2lpcc: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/
 build scripts/wav2mfcc: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2mfcc.sh
  COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2mfcc.sh /home/alba/PAV/bin/wav2mfcc
  description = Generating$ wav2mfcc.sh$ with$ a$ custom$ command.
+
+build scripts/wav2mfccdif: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2mfccdif.sh
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2mfccdif.sh /home/alba/PAV/bin/wav2mfccdif
+ description = Generating$ wav2mfccdif.sh$ with$ a$ custom$ command.
+
+build scripts/wav2mfccaccel: CUSTOM_COMMAND /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2mfccaccel.sh
+ COMMAND = ln -sf /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/scripts/wav2mfccaccel.sh /home/alba/PAV/bin/wav2mfccaccel
+ description = Generating$ wav2mfccaccel.sh$ with$ a$ custom$ command.
 
 build meson-doc: CUSTOM_COMMAND 
  COMMAND = /usr/bin/python3 /usr/bin/meson --internal commandrunner /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4 /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release src/doxyfile /usr/bin/python3 /usr/bin/meson /usr/bin/doxygen /mnt/c/Users/ALBA/Desktop/TELECOS/3B/PAV/LAB/P4/bin/release/src/doxyfile/Doxyfile
@@ -233,7 +245,7 @@ build meson-uninstall: CUSTOM_COMMAND PHONY
 
 build uninstall: phony meson-uninstall
 
-build all: phony src/pav/libpav.a src/gmm_classify src/gmm_show src/gmm_train src/gmm_verify src/pearson src/fmatrix_cut src/fmatrix_show scripts/run_spkid scripts/plot_gmm_feat scripts/spk_verif_score scripts/wav2lp scripts/wav2lpcc scripts/wav2mfcc pav_spkid_pytorch/make_spk2idx pav_spkid_pytorch/test_nn pav_spkid_pytorch/train_nn pav_spkid_pytorch/utils
+build all: phony src/pav/libpav.a src/gmm_classify src/gmm_show src/gmm_train src/gmm_verify src/pearson src/fmatrix_cut src/fmatrix_show scripts/run_spkid scripts/run_spkid_din scripts/plot_gmm_feat scripts/spk_verif_score scripts/wav2lp scripts/wav2lpcc scripts/wav2mfcc scripts/wav2mfccdif scripts/wav2mfccaccel pav_spkid_pytorch/make_spk2idx pav_spkid_pytorch/test_nn pav_spkid_pytorch/train_nn pav_spkid_pytorch/utils
 
 default all
 

@@ -2,11 +2,14 @@
 
 scripts = [
     'run_spkid.sh',
+    'run_spkid_din.sh',
     'plot_gmm_feat.py',
     'spk_verif_score.pl',
     'wav2lp.sh',
     'wav2lpcc.sh',
     'wav2mfcc.sh',
+    'wav2mfccdif.sh',
+    'wav2mfccaccel.sh'
 
 ]
 
