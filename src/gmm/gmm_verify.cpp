@@ -23,7 +23,7 @@ int read_gmms(const Directory &dir, const Ext &ext, const vector<string> &gmm_fi
 
 
 
-float verify(const GMM &gmm_candidate, const fmatrix &dat) {
+float verify(const GMM &gmm_candidate, const vector<fmatrix> &dat) {
 
   //TODO: implement verification score based on gmm of the candidate
   /*
@@ -32,22 +32,26 @@ float verify(const GMM &gmm_candidate, const fmatrix &dat) {
    */
 
   float score = 0.0F;
-  float lprobcand = gmm_candidate.logprob(dat);
+  float lprobcand = 0;
+  for(int i=0; i<dat.size(); i++){
+   lprobcand = lprobcand + gmm_candidate.logprob(dat[i]);
+  }
     score=lprobcand;
   return score;
 }
 
 
-float verify(const GMM &gmm_candidate, const GMM & gmm_world, const fmatrix &dat,
+float verify(const GMM &gmm_candidate, const GMM & gmm_world, const vector<fmatrix> &dat,
 	     float &lprobcand, float &lprobbackground) {
 
   //TODO: implement verification score based on gmm of the candidate and 'world' model
   float score = 0.0F;
   lprobcand = 0.0F;
   lprobbackground = 0.0F;
-
-  lprobcand=gmm_candidate.logprob(dat);
-  lprobbackground=gmm_world.logprob(dat);
+for(int i=0; i<dat.size(); i++){
+  lprobcand=lprobcand+gmm_candidate.logprob(dat[i]);
+  lprobbackground=lprobbackground+gmm_world.logprob(dat[i]);
+}
     score=lprobcand-lprobbackground;
 
   return score;
@@ -65,6 +69,7 @@ int main(int argc, const char *argv[]) {
 
   int retv = read_options(argc, argv, input_dirs, input_exts, 
 			  gmm_dirs, gmm_exts, input_filenames, candidates, gmm_filenames, world_name);
+
 
   if (retv != 0)
     return usage(argv[0], retv);
@@ -110,7 +115,9 @@ int main(int argc, const char *argv[]) {
      and that each candidate has its onw gmm */
 
   ///Read and verify files
+
   for (unsigned int i=0; i<input_filenames.size(); ++i) {
+   
 
     map<string,GMM>::const_iterator igmm = mgmm.find(candidates[i]);
     if (igmm == mgmm.end()) {
@@ -118,20 +125,21 @@ int main(int argc, const char *argv[]) {
       return -2;
     }
     const GMM &gmm_candidate = igmm->second;
+    vector<fmatrix> dat;
 
-
-    fmatrix dat;
-    string path = input_dirs[0] + input_filenames[i] + input_exts[0];
+ for (unsigned int j=0; j<input_dirs.size(); j++){
+    vector<fmatrix> dat;
+    string path = input_dirs[j] + input_filenames[i] + input_exts[j];
     ifstream ifs(path.c_str(), ios::binary);
     if (ifs.good())
-      ifs >> dat;
+      ifs >> dat[0];
 
     if (!ifs.good()) {
       cerr << "Error reading data file: " << path << endl;
       return usage(argv[0],1);
     }
-
-
+    }
+    
     if (world_name.empty()) {
       float score = verify(gmm_candidate, dat);
       cout << input_filenames[i] << '\t' << candidates[i] << '\t' << score << endl;
@@ -142,6 +150,7 @@ int main(int argc, const char *argv[]) {
       cout << input_filenames[i] << '\t' << candidates[i] << '\t' << score 
 	   << '\t' << probCandidate <<'\t' << probWorld << endl; 
     }
+  
   }
   return 0;
 }

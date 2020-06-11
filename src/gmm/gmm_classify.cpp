@@ -84,13 +84,17 @@ int main(int argc, const char *argv[]) {
    vector<vector<GMM>> mgmm; 
    mgmm.resize(3); 
    mgmm[0] = vgmm;
-  retv = read_gmms(gmm_dirs[0], gmm_exts[0], gmm_filenames, mgmm[0]);
+   for (int i=0; i<gmm_dirs.size(); i++){
+      retv = read_gmms(gmm_dirs[i], gmm_exts[i], gmm_filenames, mgmm[i]);
   if (retv != 0)
     return usage(argv[0], retv);
+
+   }
     vector<fmatrix> vfmat; 
 
   ///Read and classify files
   for (unsigned int i=0; i<input_filenames.size(); ++i) {
+
     for(unsigned int j=0; j<input_dirs.size(); j++){
     fmatrix dat;
     string path = input_dirs[j] + input_filenames[i] + input_exts[j];
