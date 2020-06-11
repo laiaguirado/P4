@@ -94,3 +94,17 @@
 157	186	1589620904	pav_spkid_pytorch/test_nn	17cefac3761f86ed
 162	192	1589620904	pav_spkid_pytorch/train_nn	8d31b3b682c8c594
 171	196	1589620904	pav_spkid_pytorch/utils	60db7d6bfce58bfa
+50	138	1589704997	scripts/run_spkid	551a96a6358bb932
+55	185	1591884224	scripts/run_spkid_din	a8a61972ce54b31f
+65	216	1589620922	scripts/plot_gmm_feat	6a67bcca3456dc93
+76	232	1589620904	scripts/spk_verif_score	9cc99fa743b2702
+156	251	1589620904	scripts/wav2lp	3c7a3993a32c901e
+198	268	1589620922	scripts/wav2lpcc	80616c9b3c98505d
+220	280	1591784242	scripts/wav2mfcc	cf072950f2b217d
+237	286	1591784242	scripts/wav2mfccdif	b19e04ffb37d41fe
+254	299	1591784242	scripts/wav2mfccaccel	ff0f4e05197a21b
+282	318	1589620904	pav_spkid_pytorch/test_nn	17cefac3761f86ed
+289	323	1589620904	pav_spkid_pytorch/train_nn	8d31b3b682c8c594
+271	325	1589620904	pav_spkid_pytorch/make_spk2idx	3baab867c6405c5c
+300	337	1589620904	pav_spkid_pytorch/utils	60db7d6bfce58bfa
+39	3830	1591894603	src/gmm_classify@exe/gmm_gmm_classify.cpp.o	7b6572af54a68fab
