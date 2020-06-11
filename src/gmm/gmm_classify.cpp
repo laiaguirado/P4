@@ -57,7 +57,13 @@ int main(int argc, const char *argv[]) {
   int retv = read_options(argc, argv, input_dirs, input_exts, 
 			  gmm_dirs, gmm_exts, input_filenames, gmm_filenames);
 
-  if (retv != 0)
+  int retv1 = read_options(argc, argv, input_dirs, input_exts, 
+			  gmm_dirs, gmm_exts, input_filenames, gmm_filenames);
+  
+  int retv2 = read_options(argc, argv, input_dirs, input_exts, 
+			  gmm_dirs, gmm_exts, input_filenames, gmm_filenames);
+
+  if (retv != 0 || retv1 != 0 || retv2 != 0)
     return usage(argv[0], retv);
 #if 0
   cout << "IDIR----------\n"; for (unsigned int i=0; i<input_dirs.size(); ++i) cout << input_dirs[i] << endl;
@@ -83,17 +89,22 @@ int main(int argc, const char *argv[]) {
    vector<GMM> vgmm;
    vector<vector<GMM>> mgmm; 
    mgmm.resize(3); 
-   mgmm[0] = vgmm;
-   for (int i=0; i<gmm_dirs.size(); i++){
-      retv = read_gmms(gmm_dirs[i], gmm_exts[i], gmm_filenames, mgmm[i]);
-  if (retv != 0)
+
+      retv = read_gmms(gmm_dirs[0], gmm_exts[0], gmm_filenames, mgmm[0]);
+
+     /* retv1 = read_gmms(gmm_dirs[1], gmm_exts[1], gmm_filenames, mgmm[1]);
+      retv2 = read_gmms(gmm_dirs[2], gmm_exts[2] , gmm_filenames, mgmm[2]);
+      */
+
+  if (retv != 0|| retv1 != 0 || retv2 != 0)
     return usage(argv[0], retv);
 
-   }
+   
+
     vector<fmatrix> vfmat; 
 
   ///Read and classify files
-  for (unsigned int i=0; i<input_filenames.size(); ++i) {
+  for (unsigned int i=0; i<input_filenames.size(); i++) {
 
     for(unsigned int j=0; j<input_dirs.size(); j++){
     fmatrix dat;
