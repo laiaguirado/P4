@@ -8,8 +8,9 @@ scripts = [
     'wav2lp.sh',
     'wav2lpcc.sh',
     'wav2mfcc.sh',
-    'wav2mfccdif.sh',
-    'wav2mfccaccel.sh'
+    'wav2mfccdelta.sh',
+    'wav2mfccdeltadelta.sh',
+    'wav2mfccdeltadeltatotal.sh'
 
 ]
 

@@ -108,43 +108,22 @@ compute_mfcc(){
         echo $EXEC && $EXEC || exit 1
     done
 }
-compute_mfcc_dif(){
+compute_mfcc_delta(){
     for filename in $(cat $lists/class/all.train $lists/class/all.test); do
         mkdir -p `dirname $w/$FEAT/$filename.$FEAT`
-        EXEC="wav2mfccdif 19 30 $db/$filename.wav $w/$FEAT/$filename.$FEAT"
+        EXEC="wav2mfccdelta 19 30 $db/$filename.wav $w/$FEAT/$filename.$FEAT"
         echo $EXEC && $EXEC || exit 1
     done
 }
-compute_mfcc_accel(){
+compute_mfcc_deltadelta(){
     for filename in $(cat $lists/class/all.train $lists/class/all.test); do
         mkdir -p `dirname $w/$FEAT/$filename.$FEAT`
-        EXEC="wav2mfccaccel 19 30 $db/$filename.wav $w/$FEAT/$filename.$FEAT"
+        EXEC="wav2mfccdeltadelta 19 30 $db/$filename.wav $w/$FEAT/$filename.$FEAT"
         echo $EXEC && $EXEC || exit 1
     done
 }
 
-compute_mpc(){
 
-     for filename in $(cat $lists/class/all.train $lists/class/all.test); do
-        mkdir -p `dirname $w/$FEAT/$filename.mpc.dif`
-        EXEC="wav2mfccdif 19 30 $db/$filename.wav $w/$FEAT/$filename.mpc.dif"
-        echo $EXEC && $EXEC || exit 1
-    done
-
-    for filename in $(cat $lists/class/all.train $lists/class/all.test); do
-        #mkdir -p `dirname $w/$FEAT/$filename.$FEAT`
-        EXEC="wav2mfcc 19 30 $db/$filename.wav $w/$FEAT/$filename.$FEAT"
-        echo $EXEC && $EXEC || exit 1
-    done
-
-    for filename in $(cat $lists/class/all.train $lists/class/all.test); do
-       # mkdir -p `dirname $w/$FEAT/$filename.mpc.accel`
-        EXEC="wav2mfccaccel 19 30 $db/$filename.wav $w/$FEAT/$filename.mpc.accel"
-        echo $EXEC && $EXEC || exit 1
-    done
-
-
-}
 
 
 #  Set the name of the feature (not needed for feature extraction itself)
@@ -168,21 +147,19 @@ fi
 for cmd in $*; do
    echo `date`: $cmd '---';
 
-   if [[ $cmd == train_mfcc ]]; then
+   if [[ $cmd == train]]; then
        ## @file
 	   # \TODO
 	   # Select (or change) good parameters for gmm_train
        for dir in $db/BLOCK*/SES* ; do
            name=${dir/*\/}
            echo $name ----
-           gmm_train -i 1 -v 5 -T 0.000001 -N 100 -m 20 -n 100 -t 0.000001 -d $w/mfcc -e mfcc -g $w/gmm/mfcc/$name.gmm $lists/class/$name.train 
-           gmm_train -i 1 -v 5 -T 0.000001 -N 100 -m 20 -n 100 -t 0.000001 -d $w/mfcc_dif -e mfcc_dif -g $w/gmm/mfcc_dif/$name.gmm $lists/class/$name.train
-           gmm_train -i 1 -v 5 -T 0.000001 -N 100 -m 20 -n 100 -t 0.000001 -d $w/mfcc_accel -e mfcc_accel -g $w/gmm/mfcc_accel/$name.gmm $lists/class/$name.train || exit 1
+           gmm_train -i 1 -v 5 -T 0.000001 -N 100 -m 20 -n 100 -t 0.000001 -d $w/mfcc -e mfcc -g $w/gmm/mfcc/$name.gmm $lists/class/$name.train || exit 1
            
            echo
        done
-   elif [[ $cmd == test_mfcc ]]; then
-       (gmm_classify -d $w/$FEAT -e $FEAT -D $w/gmm/$FEAT -E gmm -d $w/mfcc_dif -e mfcc.dif -D $w/gmm/mfcc_dif -E gmm  $lists/gmm.list  $lists/class/all.test | tee $w/class_${FEAT}_${name_exp}.log) || exit 1
+   elif [[ $cmd == test ]]; then
+       (gmm_classify -d $w/$FEAT -e $FEAT -D $w/gmm/$FEAT -E gmm   $lists/gmm.list  $lists/class/all.test | tee $w/class_${FEAT}_${name_exp}.log) || exit 1
 
    elif [[ $cmd == classerr ]]; then
        if [[ ! -s $w/class_${FEAT}_${name_exp}.log ]] ; then
@@ -195,13 +172,11 @@ for cmd in $*; do
                  if ($1 == $2) {$ok++}
                  else {$err++}
                  END {printf "nerr=%d\tntot=%d\terror_rate=%.2f%%\n", ($err, $ok+$err, 100*$err/($ok+$err))}' $w/class_${FEAT}_${name_exp}.log | tee -a $w/class_${FEAT}_${name_exp}.log
-   elif [[ $cmd == trainworld_mfcc ]]; then
+   elif [[ $cmd == trainworld ]]; then
        ## @file
 	   # \TODO
 	   # Implement 'trainworld' in order to get a Universal Background Model for speaker verification
-        gmm_train -i 1 -v 5 -T 0.000001 -N 200 -m 20 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/world.gmm $lists/verif/users_and_others.train 
-        gmm_train -i 1 -v 5 -T 0.000001 -N 200 -m 20 -d $w/mfcc_dif -e mfcc_dif -g $w/gmm/mfcc_dif/world.gmm $lists/verif/users_and_others.train 
-        gmm_train -i 1 -v 5 -T 0.000001 -N 200 -m 20 -d $w/mfcc_accel -e mfcc_accel -g $w/gmm/mfcc_accel/world.gmm $lists/verif/users_and_others.train || exit 1
+        gmm_train -i 1 -v 5 -T 0.000001 -N 200 -m 20 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/world.gmm $lists/verif/users_and_others.train  || exit 1
 	   # - The name of the world model will be used by gmm_verify in the 'verify' command below.
        #echo "Implement the trainworld option ..."
    elif [[ $cmd == verify ]]; then

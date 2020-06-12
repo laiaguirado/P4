@@ -20,31 +20,22 @@ int read_options(int ArgC, const char *ArgV[], vector<Directory> &input_dirs, ve
 int read_gmms(const Directory &dir, const Ext &ext, const vector<string> &gmm_filenames, vector<GMM> &vgmm);
 
 
-int classify(const vector<vector<GMM>> &mgmm, const vector<fmatrix> &vmat, float &maxlprob) {
- 
+int classify(const vector<GMM> &vgmm, const fmatrix &dat, float &maxlprob) {
+  float  lprob;
   int maxind  = -1;
-  vector<float> lprob;
   maxlprob = -1e38;
-  float totalprob=0;
 
   //TODO .. assign maxind to the best index of vgmm
   //for each gmm, call logprob. Implement this function in gmm.cpp
+  maxind = 0;
 
-
-  for(int i=0;i<mgmm[0].size();i++){
-    totalprob=0;
-    for (int j=0; j<mgmm.size(); j++){
-      lprob[j] = mgmm[j][i].logprob(vmat[j]); 
-      totalprob= totalprob + lprob[j];
+  for(int i=0;i<vgmm.size();i++){
+    lprob = vgmm[i].logprob(dat);
+    if(maxlprob<=lprob){
+      maxlprob=lprob;
+      maxind=i;
     }
-    
-    if(maxlprob<=totalprob){
-      maxlprob=totalprob;
-      maxind = i;
-    }
-  
-}
- 
+  }
   return maxind;
 }
 
@@ -57,13 +48,7 @@ int main(int argc, const char *argv[]) {
   int retv = read_options(argc, argv, input_dirs, input_exts, 
 			  gmm_dirs, gmm_exts, input_filenames, gmm_filenames);
 
-  int retv1 = read_options(argc, argv, input_dirs, input_exts, 
-			  gmm_dirs, gmm_exts, input_filenames, gmm_filenames);
-  
-  int retv2 = read_options(argc, argv, input_dirs, input_exts, 
-			  gmm_dirs, gmm_exts, input_filenames, gmm_filenames);
-
-  if (retv != 0 || retv1 != 0 || retv2 != 0)
+  if (retv != 0)
     return usage(argv[0], retv);
 #if 0
   cout << "IDIR----------\n"; for (unsigned int i=0; i<input_dirs.size(); ++i) cout << input_dirs[i] << endl;
@@ -86,29 +71,15 @@ int main(int argc, const char *argv[]) {
  
   */
 
-   vector<GMM> vgmm;
-   vector<vector<GMM>> mgmm; 
-   mgmm.resize(3); 
-
-      retv = read_gmms(gmm_dirs[0], gmm_exts[0], gmm_filenames, mgmm[0]);
-
-     /* retv1 = read_gmms(gmm_dirs[1], gmm_exts[1], gmm_filenames, mgmm[1]);
-      retv2 = read_gmms(gmm_dirs[2], gmm_exts[2] , gmm_filenames, mgmm[2]);
-      */
-
-  if (retv != 0|| retv1 != 0 || retv2 != 0)
+  vector<GMM> vgmm;
+  retv = read_gmms(gmm_dirs[0], gmm_exts[0], gmm_filenames, vgmm);
+  if (retv != 0)
     return usage(argv[0], retv);
 
-   
-
-    vector<fmatrix> vfmat; 
-
   ///Read and classify files
-  for (unsigned int i=0; i<input_filenames.size(); i++) {
-
-    for(unsigned int j=0; j<input_dirs.size(); j++){
+  for (unsigned int i=0; i<input_filenames.size(); ++i) {
     fmatrix dat;
-    string path = input_dirs[j] + input_filenames[i] + input_exts[j];
+    string path = input_dirs[0] + input_filenames[i] + input_exts[0];
     ifstream ifs(path.c_str(), ios::binary);
     if (ifs.good())
       ifs >> dat;
@@ -117,12 +88,10 @@ int main(int argc, const char *argv[]) {
       cerr << "Error reading data file: " << path << endl;
       return usage(argv[0],1);
     }
-      vfmat[j] = dat;
-    }
 
     int nclass;
     float lprob;
-    nclass = classify(mgmm, vfmat, lprob);
+    nclass = classify(vgmm, dat, lprob);
     cout << input_filenames[i] << '\t' << gmm_filenames[nclass] 
 	 << '\t' << lprob << endl; 
   }

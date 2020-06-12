@@ -5,7 +5,7 @@ import numpy as np
 import soundfile as sf
 
 
-fdatos = open('mfcc_2_3.txt', 'r')
+fdatos = open('mfcc_delta_2_3.txt', 'r')
 x_datos = []                #  Creamos una lista para la primera columna
 y_datos = []                #  Creamos una lista para la segunda columna
 lineas = fdatos.readlines() # Leemos el fichero línea a línea
