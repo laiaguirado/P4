@@ -172,11 +172,11 @@ for cmd in $*; do
                  if ($1 == $2) {$ok++}
                  else {$err++}
                  END {printf "nerr=%d\tntot=%d\terror_rate=%.2f%%\n", ($err, $ok+$err, 100*$err/($ok+$err))}' $w/class_${FEAT}_${name_exp}.log | tee -a $w/class_${FEAT}_${name_exp}.log
-   elif [[ $cmd == trainworld ]]; then
+    elif [[ $cmd == trainworld ]]; then
        ## @file
 	   # \TODO
 	   # Implement 'trainworld' in order to get a Universal Background Model for speaker verification
-        gmm_train -i 1 -v 5 -T 0.000001 -N 200 -m 20 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/world.gmm $lists/verif/users_and_others.train  || exit 1
+        gmm_train -i 1 -v 5 -T 0.000001 -N 200 -m 20 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/world.gmm $lists/verif/users_and_others.train || exit 1
 	   # - The name of the world model will be used by gmm_verify in the 'verify' command below.
        #echo "Implement the trainworld option ..."
    elif [[ $cmd == verify ]]; then
@@ -190,7 +190,7 @@ for cmd in $*; do
 	   #   * <code> gmm_verify ... | tee $w/verif_${FEAT}_${name_exp}.log </code>
        #echo "Implement the verify option ..."
  
-   elif [[ $cmd == verif_err ]]; then
+    elif [[ $cmd == verif_err ]]; then
        if [[ ! -s $w/verif_${FEAT}_${name_exp}.log ]] ; then
           echo "ERROR: $w/verif_${FEAT}_${name_exp}.log not created"
           exit 1
@@ -198,6 +198,7 @@ for cmd in $*; do
        # You can pass the threshold to spk_verif_score.pl or it computes the
        # best one for these particular results.
        scripts/spk_verif_score.pl $w/verif_${FEAT}_${name_exp}.log | tee $w/verif_${FEAT}_${name_exp}.res
+
 
    elif [[ $cmd == finalclass ]]; then
        ## @file
